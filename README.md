@@ -1,2 +1,5 @@
 # image-resize
-learn go project
+Reisze image with go
+
+feature:
+- configurable
