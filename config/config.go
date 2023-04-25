@@ -5,16 +5,6 @@ import (
 	"github.com/spf13/viper"
 )
 
-type Configurations struct {
-	ImgSize  ImageConfigurations
-	FileName string
-}
-
-type ImageConfigurations struct {
-	Height int
-	Width  int
-}
-
 func read(config string) (name string, number int) {
 	// Set the file name of the configurations file
 	viper.SetConfigName("config")
@@ -26,15 +16,9 @@ func read(config string) (name string, number int) {
 	viper.AutomaticEnv()
 
 	viper.SetConfigType("yml")
-	var configuration Configurations
 
 	if err := viper.ReadInConfig(); err != nil {
 		fmt.Printf("Error reading config file, %s", err)
-	}
-
-	err := viper.Unmarshal(&configuration)
-	if err != nil {
-		fmt.Printf("Unable to decode into struct, %v", err)
 	}
 
 	name = viper.GetString(config)
