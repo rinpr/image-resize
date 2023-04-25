@@ -1,5 +1,5 @@
 # image-resize
-Reisze image with go
+Resize image with go
 
 feature:
 - configurable
