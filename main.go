@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/sunshineplan/imgconv"
-	"image-reseize/config"
+	"image-resize/config"
 	"log"
 )
 

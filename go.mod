@@ -1,4 +1,4 @@
-module image-reseize
+module image-resize
 
 go 1.20
 
