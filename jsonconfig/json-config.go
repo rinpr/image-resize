@@ -18,7 +18,7 @@ type Config struct {
 	Width    int    `json:"width"`
 }
 
-func Json() (conf ImageConfig) {
+func readJson() (conf ImageConfig) {
 	// Open our jsonFile
 	jsonFile, err := os.Open("config.json")
 	// if we os.Open returns an error then handle it
@@ -59,7 +59,7 @@ func Json() (conf ImageConfig) {
 }
 
 func GetConfig(index int) (image Config) {
-	configs := Json()
+	configs := readJson()
 	image = Config{configs.ImageConfig[index].Filename, configs.ImageConfig[index].Format, configs.ImageConfig[index].Width}
 	return
 }
