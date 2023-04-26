@@ -3,7 +3,7 @@ package jsonconfig
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"os"
 )
@@ -36,7 +36,7 @@ func readJson() (conf ImageConfig) {
 	}(jsonFile)
 
 	// read our opened xmlFile as a byte array.
-	byteValue, _ := ioutil.ReadAll(jsonFile)
+	byteValue, _ := io.ReadAll(jsonFile)
 
 	// we initialize our Users array
 	var settings ImageConfig
