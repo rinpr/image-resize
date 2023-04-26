@@ -13,9 +13,9 @@ type ImageConfig struct {
 }
 
 type Config struct {
-	Name   string `json:"name"`
-	Format string `json:"format"`
-	Width  int    `json:"width"`
+	Filename string `json:"file_name"`
+	Format   string `json:"format"`
+	Width    int    `json:"width"`
 }
 
 func Json() (conf ImageConfig) {
@@ -60,6 +60,6 @@ func Json() (conf ImageConfig) {
 
 func GetConfig(index int) (name string, format string, width int) {
 	configs := Json()
-	name, format, width = configs.ImageConfig[index].Name, configs.ImageConfig[index].Format, configs.ImageConfig[index].Width
+	name, format, width = configs.ImageConfig[index].Filename, configs.ImageConfig[index].Format, configs.ImageConfig[index].Width
 	return
 }
