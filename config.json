@@ -1,0 +1,14 @@
+{
+  "image_config": [
+    {
+      "name": "7",
+      "format": "PNG",
+      "width": 250
+    },
+    {
+      "name": "7",
+      "format": "JPG",
+      "width": 180
+    }
+  ]
+}
