@@ -1,4 +1,4 @@
-package json
+package jsonconfig
 
 import (
 	"encoding/json"
@@ -58,8 +58,8 @@ func Json() (conf ImageConfig) {
 	return settings
 }
 
-func GetConfig(index int) (name string, format string, width int) {
+func GetConfig(index int) (image Config) {
 	configs := Json()
-	name, format, width = configs.ImageConfig[index].Filename, configs.ImageConfig[index].Format, configs.ImageConfig[index].Width
+	image = Config{configs.ImageConfig[index].Filename, configs.ImageConfig[index].Format, configs.ImageConfig[index].Width}
 	return
 }
