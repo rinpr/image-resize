@@ -1,5 +1,6 @@
 # image-resize
-Resize image with go
+Resize image with golang
 
-feature:
-- configurable
+    Feature:
+    - configurable with both yml and json
+    - maybe able to get request from website to resize image
