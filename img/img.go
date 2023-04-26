@@ -1,15 +1,24 @@
-package resize
+package img
 
 import (
 	"fmt"
 	"github.com/sunshineplan/imgconv"
+	"image-resize/jsonconfig"
 	"log"
 )
 
 // Documentation for image conversion.
 // https://pkg.go.dev/github.com/sunshineplan/imgconv
 
-func PngResize(fileName string, width int) {
+func Resize(image jsonconfig.Config) {
+	if image.Format == "PNG" {
+		pngResize(image.Filename, image.Width)
+	} else if image.Format == "JPG" {
+		jpgResize(image.Filename, image.Width)
+	}
+}
+
+func pngResize(fileName string, width int) {
 	// Open a test image.
 	path := fmt.Sprintf("image/%s.png", fileName)
 	src, err := imgconv.Open(path)
@@ -28,7 +37,7 @@ func PngResize(fileName string, width int) {
 	fmt.Println("Successfully exported resized image!")
 }
 
-func JpgResize(fileName string, width int) {
+func jpgResize(fileName string, width int) {
 	// Open a test image.
 	path := fmt.Sprintf("image/%s.png", fileName)
 	src, err := imgconv.Open(path)
