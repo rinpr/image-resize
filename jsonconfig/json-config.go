@@ -8,6 +8,9 @@ import (
 	"os"
 )
 
+// Documentation for parsing json
+// https://tutorialedge.net/golang/parsing-json-with-golang/
+
 type ImageConfig struct {
 	ImageConfig []Config `json:"image_config"`
 }
