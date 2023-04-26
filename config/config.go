@@ -40,3 +40,5 @@ func GetName() (name string) {
 	name, _ = read("FileName")
 	return
 }
+
+// https://medium.com/@bnprashanth256/reading-configuration-files-and-environment-variables-in-go-golang-c2607f912b63
