@@ -1,14 +1,9 @@
 {
   "image_config": [
     {
-      "file_name": "7",
+      "directory": "image/",
       "format": "PNG",
       "width": 250
-    },
-    {
-      "file_name": "7",
-      "format": "JPG",
-      "width": 180
     }
   ]
 }

@@ -2,7 +2,6 @@ package jsonconfig
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"log"
 	"os"
@@ -16,9 +15,9 @@ type ImageConfig struct {
 }
 
 type Config struct {
-	Filename string `json:"file_name"`
-	Format   string `json:"format"`
-	Width    int    `json:"width"`
+	Directory string `json:"directory"`
+	Format    string `json:"format"`
+	Width     int    `json:"width"`
 }
 
 func readJson() (conf ImageConfig) {
@@ -29,7 +28,7 @@ func readJson() (conf ImageConfig) {
 		log.Fatal(err)
 	}
 
-	fmt.Println("Successfully Opened config.json")
+	//fmt.Println("Successfully Opened config.json")
 	// defer the closing of our jsonFile so that we can parse it later on
 	defer func(jsonFile *os.File) {
 		err := jsonFile.Close()
@@ -51,18 +50,10 @@ func readJson() (conf ImageConfig) {
 		log.Fatal(err)
 	}
 
-	// we iterate through every user within our settings array and
-	// print out the user Type, their name, and their facebook url
-	// as just an example
-	//for i := 0; i < len(settings.ImageConfig); i++ {
-	//	fmt.Println("File format: " + settings.ImageConfig[i].Format)
-	//	fmt.Println("Width: " + strconv.Itoa(settings.ImageConfig[i].Width))
-	//}
 	return settings
 }
 
-func GetConfig(index int) (image Config) {
+func GetConfig() Config {
 	configs := readJson()
-	image = Config{configs.ImageConfig[index].Filename, configs.ImageConfig[index].Format, configs.ImageConfig[index].Width}
-	return
+	return configs.ImageConfig[0]
 }
