@@ -2,12 +2,22 @@ package main
 
 import (
 	"fmt"
+	"image-resize/http"
 	"image-resize/img"
+	"image-resize/model"
 	"sync"
 	"time"
 )
 
 func main() {
+	fmt.Println(img.GetImageFile())
+}
+
+func test() {
+	data := model.ImageData{Path: "/results/test11.png", SizeBefore: "152MB", SizeAfter: "102MB", IsSuccess: true}
+	fmt.Println(data)
+	http.SendRequest(data)
+
 	fmt.Println("Hello World!")
 
 	start := time.Now()
@@ -19,7 +29,6 @@ func main() {
 	duration := end.Sub(start)
 
 	fmt.Printf("Function took %v milliseconds to execute\n", duration.Milliseconds())
-
 }
 
 func resizeSingleImage(file string) {
