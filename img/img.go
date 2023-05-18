@@ -26,20 +26,24 @@ func GetImageFile() ([]string, error) {
 	return filenames, nil
 }
 
-func Resize(image string) {
+func Resize(image string) bool {
 	if jsonconfig.GetConfig().Format == "PNG" {
-		pngResize(image)
+		a := pngResize(image)
+		return a
 	} else if jsonconfig.GetConfig().Format == "JPG" {
-		jpgResize(image)
+		b := jpgResize(image)
+		return b
 	}
+	return false
 }
 
-func pngResize(file string) {
+func pngResize(file string) bool {
 	// Open a test image.
 	path := fmt.Sprintf("%s%v", jsonconfig.GetConfig().Directory, file)
 	src, err := imgconv.Open(path)
 	if err != nil {
 		log.Fatalf("failed to open image: %v", err)
+		return false
 	}
 
 	// Resize the image to width = 200px preserving the aspect ratio.
@@ -56,14 +60,16 @@ func pngResize(file string) {
 		log.Fatalf("failed to write image: %v", err)
 	}
 	fmt.Println("Successfully exported resized image!")
+	return true
 }
 
-func jpgResize(file string) {
+func jpgResize(file string) bool {
 	// Open a test image.
 	path := fmt.Sprintf("%s%v", jsonconfig.GetConfig().Directory, file)
 	src, err := imgconv.Open(path)
 	if err != nil {
 		log.Fatalf("failed to open image: %v", err)
+		return false
 	}
 
 	// Resize the image to width = 200px preserving the aspect ratio.
@@ -79,4 +85,5 @@ func jpgResize(file string) {
 		log.Fatalf("failed to write image: %v", err)
 	}
 	fmt.Println("Successfully exported resized image!")
+	return true
 }
